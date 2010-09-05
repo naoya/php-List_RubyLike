@@ -17,7 +17,7 @@ class List_RubyLike {
         return new $class($array);
     }
 
-    function push ($args) {
+    function push () {
         foreach (func_get_args() as $v) {
             array_push($this->list, $v);
         }
@@ -28,7 +28,7 @@ class List_RubyLike {
         return array_pop($this->list);
     }
 
-    function unshift ($args) {
+    function unshift () {
         foreach (func_get_args() as $v) {
             array_unshift($this->list, $v);
         }
