@@ -29,6 +29,14 @@ $t->is_deeply( $list->to_a(), array(10, 4, 6, 8, 5) );
 $t->is( $list->join(","), "10,4,6,8,5");
 $t->is_deeply( $list->slice(2, 2)->to_a(), array(6,8));
 
+$t->is_deeply( $list->unshift(1, 2)->to_a(), array(1, 2, 10, 4, 6, 8, 5));
+
+$list2 = new List_RubyLike(1, 2, 3);
+$t->ok( $list2 );
+$t->is( get_class( $list2 ), 'List_RubyLike');
+$t->is( $list2->length(), 3 );
+$t->is( LR(1, 2, 3)->length(), 3);
+
 /* TODO
    - each()
    - each_index()

@@ -9,6 +9,9 @@ class List_RubyLike {
     var $list;
 
     function List_RubyLike ($array) {
+        if (!is_array($array)) {
+            $array = func_get_args();
+        }
         $this->list =& $array;
     }
 
@@ -19,7 +22,8 @@ class List_RubyLike {
 
     function push () {
         foreach (func_get_args() as $v) {
-            array_push($this->list, $v);
+            // array_push($this->list, $v);
+            $this->list[] = $v;
         }
         return $this;
     }
@@ -29,7 +33,7 @@ class List_RubyLike {
     }
 
     function unshift () {
-        foreach (func_get_args() as $v) {
+        foreach (array_reverse(func_get_args()) as $v) {
             array_unshift($this->list, $v);
         }
         return $this;
@@ -111,8 +115,9 @@ class List_RubyLike {
         return $this->reduce(function ($a, $b) { return $a + $b; });
     }
 
-    function dump() {
-        var_dump($this);
+    function dump($out = false) {
+        // var_dump($this);
+        var_export($this, $out);
     }
 
     function to_a () {
@@ -121,6 +126,9 @@ class List_RubyLike {
 }
 
 function LR($array) {
+    if (!is_array($array)) {
+        $array = func_get_args();
+    }
     return new List_RubyLike( $array );
 }
 ?>
