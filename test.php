@@ -1,3 +1,5 @@
+#!/usr/bin/env php
+
 <?php
 require_once 'lib/lime.php';
 require_once 'List/RubyLike.php';
